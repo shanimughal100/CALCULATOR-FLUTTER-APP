@@ -63,14 +63,14 @@ class CalculatorScreenState extends State<CalculatorScreen> {
   void _handleOperator(String value) {
     if (_input.isNotEmpty) {
       if (_isResultShown) {
-        _firstNumber = double.parse(_input); // Set the first number after result is shown
-        _isResultShown = false;  // Reset the flag
+        _firstNumber = double.parse(_input); 
+        _isResultShown = false;  
       } else {
         _firstNumber = double.parse(_input);
       }
       _operation = value;
-      _input = '';  // Clear input for the next number
-      _display = _operation;  // Display the operator
+      _input = '';  
+      _display = _operation;  
     }
   }
 
@@ -106,11 +106,11 @@ class CalculatorScreenState extends State<CalculatorScreen> {
           break;
       }
 
-      // Update display with result and prepare for the next operation
+      
       _display = result.toString();
       _input = _display;
-      _firstNumber = result;  // Set the result as the first number for future operations
-      _operation = '';  // Clear operation after calculation
+      _firstNumber = result;  
+      _operation = '';  
       _isResultShown = true;
     }
   }
@@ -122,10 +122,8 @@ class CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     final buttons = [
-      'C', '%', '÷', '⌫',
-      '7', '8', '9', '×',
-      '4', '5', '6', '-',
-      '1', '2', '3', '+',
+      'C', '%', '÷', '⌫', '7', '8', '9', '×',
+      '4', '5', '6', '-','1', '2', '3', '+',
       '.', '0', '#', '=',
     ];
 
@@ -141,20 +139,20 @@ class CalculatorScreenState extends State<CalculatorScreen> {
           IconButton(
             icon: const Icon(Icons.notification_add_sharp, color: Colors.white,),
             onPressed: () {
-              // Add your settings navigation logic here
+              
             },
           ),
           IconButton(
             icon: const Icon(Icons.settings, color: Colors.white),
             onPressed: () {
-              // Add your settings navigation logic here
+              
             },
           ),
         ]
       ),
       body: Column(
         children: [
-          // Display Screen
+        
           Expanded(
             flex: 1,
             child: Container(
@@ -170,7 +168,7 @@ class CalculatorScreenState extends State<CalculatorScreen> {
               ),
             ),
           ),
-          // Button Grid
+          
           Expanded(
             flex: 1,
             child: GridView.builder(
@@ -185,7 +183,7 @@ class CalculatorScreenState extends State<CalculatorScreen> {
               itemBuilder: (context, index) {
                 final buttonLabel = buttons[index];
 
-                // Extend "=" button to occupy two rows
+                
                 if (buttonLabel == '=') {
                   return GridTile(
                     child: GestureDetector(
@@ -211,7 +209,7 @@ class CalculatorScreenState extends State<CalculatorScreen> {
                   );
                 }
 
-                // Normal Buttons
+                
                 return GestureDetector(
                   onTap: () => _onButtonPressed(buttonLabel),
                   child: Container(
